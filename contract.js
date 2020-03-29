@@ -33,35 +33,30 @@ const personBytecode = `0x608060405234801561001057600080fd5b506040516108d6380380
 //   data: personBytecode,
 //   arguments: [22, 'Hoang Nam']
 // }).encodeABI();
-
 // web3.eth.accounts.signTransaction({
 //   nonce: web3.eth.getTransactionCount(acc1pub),
-//   chain: 'ropsten',
-//   hardfork: 'petersburg',
 //   gas: '1000000',
 //   data: txEncodeABI
-// }, acc1pri).then(tx => {
-//   web3.eth.sendSignedTransaction(tx.rawTransaction).then(console.log)
-// })
+// }, acc1pri).then(tx => {web3.eth.sendSignedTransaction(tx.rawTransaction).then(console.log)})
 
+// --> use this way to send ether
 // web3.eth.accounts.signTransaction({
 //   nonce: web3.eth.getTransactionCount(acc1pub),
 //   to: addressTo,
 //   value: '0x000',
 //   gas: '200000',
-//   chain: 'ropsten',
-//   hardfork: 'petersburg'
 // }, acc1pri).then(tx => {
 //   web3.eth.sendSignedTransaction(tx.rawTransaction).then(console.log)
 // })
-const txData = myPersonContract.methods.setName('Dinh Hoang Nam').encodeABI();
-const tx = {
-  // to: 
-  data: txData,
-  gas: '1000000',
-};
-web3.eth.accounts.signTransaction(tx, acc1pri).then(signedTx => web3.eth.sendSignedTransaction(signedTx.rawTransaction)).then(console.log);
-;
+
+// --> use this way to send to contract method
+// const txData = myPersonContract.methods.setName('Dinh Hoang Nam').encodeABI();
+// const tx = {
+//   to: myContractAddress,
+//   data: txData,
+//   gas: '1000000',
+// };
+// web3.eth.accounts.signTransaction(tx, acc1pri).then(signedTx => web3.eth.sendSignedTransaction(signedTx.rawTransaction)).then(console.log);
 
 
 
